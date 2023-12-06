@@ -1,0 +1,9 @@
+requests==2.25.1
+scipy==1.6.2
+sklearn==0.0
+NumPy== 1.17.3
+SciPy== 1.5.0
+joblib== 1.1.1
+threadpoolctl== 2.0.0
+Scikit-learn== 0.20
+pandas==2.1.3
