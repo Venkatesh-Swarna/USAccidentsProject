@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>US Accidents Severity Prediction</title>
+    <style>
+        body {
+          background-color: rgb(99, 241, 227);
+        }
+        </style>
+ </head>
+<body>
+        <h2 align="center">Welcome US to Accidents Severity Prediction App</h2>
+        <div>
+        <h3>Enter Accident info</h3>
+        <form action = "{{ url_for('severityclassify') }}" method="POST">
+            <table border="1" style="border-color:rgb(255, 254, 254); border-collapse:collapse;" cellpadding="5" cellspacing="5">
+                <tr>
+                    <td><h4>Distance(mi)</h4> 
+                        <input type="number" name="distance"> </td>   
+                   <td><h4>Pressure(in inches)</h4> 
+                        <input type="number" name="pressure"> </td>
+                    <td><h4>Humidity(%)</h4> 
+                        <input type="number" name="humidity" min="0" max="100"> </td>
+                    <td><h4>Wind_Chill(Fahrenheit)</h4> 
+                        <input type="number" name="windChill"> </td>
+                    <td><h4>Temperature(Fahrenheit)</h4> 
+                        <input type="number" name="temperature"> </td>
+                    <td><h4>Wind_Speed(mph)</h4> 
+                        <input type="number" name="windSpeed"> </td>
+                    <td><h4>Amenity</h4> 
+                            <select name = "amenity">
+                                <option value='1'>True</option>
+                                <option value='0'>False</option>
+                            </select>   </td> 
+                </tr>
+                <tr>
+                                  
+                    <td><h4>Bump</h4>
+                        <select name = "bump">
+                            <option value='1'>True</option>
+                            <option value='0'>False</option>
+                        </select></td>
+                    <td><h4>Crossing</h4>
+                        <select name = "crossing">
+                            <option value='1'>True</option>
+                            <option value='0'>False</option>
+                        </select></td>
+                    </td>
+                    <td><h4>Junction</h4>
+                        <select name = "junction">
+                            <option value='1'>True</option>
+                            <option value='0'>False</option>
+                        </select></td>
+                    </td>
+                    </td>
+                    <td><h4>Railway</h4>
+                        <select name = "railway">
+                            <option value='1'>True</option>
+                            <option value='0'>False</option>
+                        </select></td>
+                    </td>
+                    <td><h4>Stop</h4>
+                        <select name = "stop">
+                            <option value='1'>True</option>
+                            <option value='0'>False</option>
+                        </select></td>
+                    </td>
+                    
+                    <td><h4>Traffic_Signal</h4>
+                        <select name = "trafficSignal">
+                            <option value='1'>True</option>
+                            <option value='0'>False</option>
+                        </select></td>
+                    </td>
+                    <td><h4>Sunrise_Sunset</h4>
+                        <select name = "sunriseSunset">
+                            <option value='1'>Day</option>
+                            <option value='0'>Night</option>
+                        </select></td>
+                    </td>
+                </tr>
+            </table>
+            <!-- <input type="hidden" id="forminput" name="forminput"  >    -->        
+            <p><input type="submit" value="Severity of Accident"></p>
+             {% if (results) %} 
+             <h3> Severity prediction: {{ results }}  </h3>
+            <p> for following features: </p>
+            <p> <b>Distance:</b> {{distance}} <b>Pressure:</b> {{pressure}} <b>Humidity:</b> {{humidity}} <b>WindChill:</b> {{windChill}} <b>Temperature:</b> {{temperature}} <b>WindSpeed:</b> {{windSpeed}} <b>Amenity:</b> {{amenity}} </p>
+            <p> <b>Bump:</b> {{bump}} <b>Crossing:</b> {{crossing}} <b>Junction:</b> {{junction}} <b>Railway:</b> {{railway}} <b>Stop:</b> {{stop}} <b>TrafficSignal:</b> {{trafficSignal}} <b>SunriseSunset:</b> {{sunriseSunset}} </p>
+            {% endif %} 
+        </form>
+        </div>
+</body>
+</html>
