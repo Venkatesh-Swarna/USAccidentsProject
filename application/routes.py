@@ -26,14 +26,14 @@ def severityclassify():
         windChill = request.form.get("windChill")
         temperature = request.form.get("temperature")
         windSpeed = request.form.get("windSpeed")
-        amenity = request.form.get("amenity")
-        bump = request.form.get("bump")
-        crossing = request.form.get("crossing")
-        junction = request.form.get("junction")
-        railway = request.form.get("railway")
-        stop = request.form.get("stop")
-        trafficSignal = request.form.get("trafficSignal")
-        sunriseSunset = request.form.get("sunriseSunset")
+        amenity = int(request.form.get("amenity"))
+        bump = int(request.form.get("bump"))
+        crossing = int(request.form.get("crossing"))
+        junction = int(request.form.get("junction"))
+        railway = int(request.form.get("railway"))
+        stop = int(request.form.get("stop"))
+        trafficSignal = int(request.form.get("trafficSignal"))
+        sunriseSunset = int(request.form.get("sunriseSunset"))
 
         model = joblib.load('accidentsModel.pkl')
         #model = pickle.load(open('accidentsModel.pkl','rb'))
@@ -43,6 +43,8 @@ def severityclassify():
                                      bump, crossing,junction,railway,stop,trafficSignal, sunriseSunset]])
         results = prediction[0]
         print(results)
+
+        print(type(amenity),sunriseSunset)
         return render_template("index.html", distance =distance,pressure=pressure,humidity=humidity,windChill=windChill,temperature=temperature,windSpeed=windSpeed, 
                                amenity = 'True' if amenity == 1 else 'False', bump = 'True' if bump == 1 else 'False', crossing = 'True' if crossing == 1 else 'False', 
                                 junction = 'True' if junction == 1 else 'False', railway = 'True' if railway == 1 else 'False', 
